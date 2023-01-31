@@ -20,47 +20,50 @@ class Api {
     this._url = config.url;
     this._headers = config.headers;
   }
+   _onResponse(res) {
+    return res.ok ? res.json() : Promise.reject({ ...res, message: 'error' });
+  }
   getAllCats() {
     /// отобразить всех котиков
-    fetch(`${this._url}/show`, {
+    return fetch(`${this._url}/show`, {
       method: 'GET',
-    });
-  }
+    }).then(this._onResponse);
+    }
   getAllCatsId() {
     /// отобразить все возможные айди котиков
-    fetch(`${this._url}/ids`, {
+    return fetch(`${this._url}/ids`, {
       method: 'GET',
-    });
+    }).then(this._onResponse);
   }
   getCatById(id) {
     /// отобразить конкретного котика
-    fetch(`${this._url}/show/${id}`, {
+    return fetch(`${this._url}/show/${id}`, {
       method: 'GET',
-    });
+    }).then(this._onResponse);
   }
   addNewCat(body) {
-    fetch(`${this._url}/add`, {
+    return fetch(`${this._url}/add`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify(body),
-    });
+    }).then(this._onResponse);
   }
   updateCatById(id, data) {
-    fetch(`${this._url}/update/${id}`, {
+   return fetch(`${this._url}/update/${id}`, {
       method: 'PUT',
       headers: this._headers,
       body: JSON.stringify(data),
-    });
+    }).then(this._onResponse);
   }
   deleteCatById(id) {
     /// удалить конкретного котика по айди
-    fetch(`${this._url}/delete/${id}`, {
+   return fetch(`${this._url}/delete/${id}`, {
       method: 'DELETE',
-    });
+    }).then(this._onResponse);
   }
 }
 
-// const api = new Api(configApi);
+const api = new Api(configApi);
 // console.log(api);
 
 // const newCat = {
@@ -87,3 +90,8 @@ class Api {
 // api.deleteCatById(1673690003098);
 
 
+api.getAllCats().then((data) =>
+  data.forEach((cat) => {
+    createCat(cat);
+  })
+);

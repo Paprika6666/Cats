@@ -13,7 +13,7 @@
   <title>Work cats</title>
 </head>
 <body class="page">
-  <header class= "header">
+ <header class= "header">
 	<div class="container header__container">
         <a href="#" class="logo"><i class="fa-solid fa-paw fa-2x"></i> Милые котики</a>
         <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
@@ -21,12 +21,7 @@
   </header>
 <main class= "main conteiner">
 	 <section class="cards">
-       <!--  <div id="tmp-card" class="card">
-          <img src="./assets/images/cat.jpg" alt="Image" class="card__image" />
-          <a href="#" class="card__link"><h3 class="card__name">Tom</h3> </a>
-          <button class="card__like" aria-label="Поставить лайк"><i class="fa-solid fa-heart fa-2x"></i> </button>
-        </div> -->
-        
+              
       </section>
 </main>
 <footer class= "footer">
@@ -42,7 +37,7 @@
 </footer>
  <div class="popup popup-add-cats">
       <div class="popup__container" >
-          <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
+          <button class="popup__close btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
           <h2>Добавить питомца</h2>
           <form class="form" id="popup-form-cat">
               <div class="form__image"></div>
@@ -52,11 +47,11 @@
               <input type="number" class="form__input" name="rate" placeholder="Рейтинг (0-10)" min="0" max="10">
               <textarea name="description" class="form__input form__textarea" placeholder="Описание"></textarea>
               <label class="form__checkbox-wrap">
-                  <input type="checkbox" name="favourite" class="form__checkbox " placeholder="">
+                  <input type="checkbox" name="favorite" class="form__checkbox " placeholder="">
                   <span class="form__label">Любимчик</span>  
                   <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
               </label>
-              <input type="url" class="form__input form__input_image" name="img_link" placeholder="Ссылка на фото">
+              <input type="url" class="form__input form__input_image" name="image" placeholder="Ссылка на фото">
               <button type="submit" class="form__btn btn">Добавить котика</button>
           </form>
       </div>
@@ -67,12 +62,16 @@
     <div class="card">
       <img src="./assets/images/cat.jpg" alt="Image" class="card__image" />
       <a href="#" class="card__link"><h3 class="card__name">Tom</h3> </a>
+       <button class="card__delete" id="card-delete" aria-label="delete"><i class="fa-solid fa-trash"></i> </button>
       <button class="card__like" aria-label="Поставить лайк"><i class="fa-solid fa-heart fa-2x"></i> </button>
     </div>
   </template>
+
+
 <script src="./scripts/api.js"></script>
-<script src="./scripts/card.js"></script>
 <script src="./scripts/cats.js"></script>
+<script src="./scripts/utils.js"></script>
+<script src="./scripts/card.js"></script>
 <script src="./scripts/popup.js"></script>
 <script src="./scripts/index.js"></script>
 </html>

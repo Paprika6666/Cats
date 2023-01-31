@@ -14,3 +14,20 @@
   color: var(--text-light-color);
   cursor: pointer;
 }
+
+#card-delete {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  padding: 6px 10px;
+
+  font-size: 12px;
+  gap: 10px;
+  border: none;
+  background-color: var(--bg-secondary-color);
+  color: var(--text-light-color);
+  cursor: pointer;
+}
