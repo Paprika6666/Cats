@@ -21,9 +21,9 @@ function handleFormAddCat(e) {
 
 // cats.forEach((cat)=> {
 // 	createCat(cat);
-	// const cardInstance = new Card(cat, "card-template");
-	// const newCardElement - cardInstance.getElement();
-	// cardsContainer.append(newCardElement);
+// 	const cardInstance = new Card(cat, "card-template");
+// 	const newCardElement - cardInstance.getElement();
+// 	cardsContainer.append(newCardElement);
 // })
 
   // api.addNewCat(dataFromForm);

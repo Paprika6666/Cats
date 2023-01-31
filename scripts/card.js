@@ -1,7 +1,9 @@
 class Card {
   constructor(dataCat, selectorTemplate) {
+    // constructor(dataCat, selectorTemplate, onClickToEdit) {
     this._data = dataCat;
     this._selectorTemplate = selectorTemplate;
+    // this.onClickToEdit = onClickToEdit;
   }
 
   _getTemplate() {  
@@ -9,18 +11,31 @@ class Card {
      }
   getElement() {
     this.element = this._getTemplate().cloneNode(true);
+    // const cardTitle = this.element.querySelector('.card__name');
     const cardTitle = this.element.querySelector('.card__name');
     const cardImage = this.element.querySelector('.card__image');
     const cardLike = this.element.querySelector('.card__like');
-    const cardDelete = this.element.querySelector('.card__delete');
-    
-    // console.log({ cardDelete });
+    const deleteBtn = this.element.querySelector('.card__delete');
+    const cardLink = this.element.querySelector('.card__link');
 
-    // console.log('>>>', this._data);
-    cardDelete.classList.add(`${this._data.id}`);
+    this.cardTitle = this.element.querySelector('.card__name');
 
+    deleteBtn.setAttribute('id',this._data.id);
+// this.element.setAttribute('id', this.data.id);
+    deleteBtn.addEventListener('click', (e)=>{
+      console.log(e, '>>>',this._data.id);
 
-    if (!this._data.favorite) {
+        if (confirm ('Хотите удалить котика?')){
+           api.deleteCatById(this._data.id).then(()=>{
+            const elem = document.getElementById(this._data.id);
+            elem.parentElement.remove();
+           });
+          
+        }
+     
+    });
+   
+      if (!this._data.favorite) {
       cardLike.remove();
     }
 
@@ -32,6 +47,12 @@ class Card {
     cardImage.src =
       this._data.image ||
       'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
+
+      // cardLink.addEventListener('click', ()=>{
+      // // console.log('data.id',this_data.id)
+      // this.onClickToEdit(this.element, this._data.id)
+      // });
+
     return this.element;
   }
 }

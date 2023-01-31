@@ -57,7 +57,7 @@ class Api {
   }
   deleteCatById(id) {
     /// удалить конкретного котика по айди
-   return fetch(`${this._url}/delete/${id}`, {
+    return fetch(`${this._url}/delete/${id}`, {
       method: 'DELETE',
     }).then(this._onResponse);
   }
